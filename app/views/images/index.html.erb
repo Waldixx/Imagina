@@ -1,0 +1,37 @@
+
+  <div class="navbar-inner">
+    <center><h1><font color="#708090">Imagina</font></h1></center>
+  </div>
+<br>
+<div><%= render :partial => 'images/form' %></div>
+<div class="row-fluid">
+  <div class="span8 columns">
+
+    <div id="myCarousel" class="carousel">
+      <div class="carousel-inner">
+        <% i = 0 %>
+        <% @images.each do |image| %>
+            <% if i == 0 %>
+                <div class="active item">
+                  <% i=1 %>
+            <% else %>
+                <div class="item">
+            <% end %>
+            <center>
+              <%= image_tag image.picture_url, :id => image.id %>
+              <a class="left">&lsaquo;</a>
+              <a class="right">&rsaquo;</a></center>
+            </div>
+        <% end %>
+
+        </div>
+      </div>
+    </div>
+
+  <br/>
+
+  <div id="comentarios" class="span3">
+    <div id="comments"><%= render :template => 'comments/index' %></div>
+    <div><%= render :partial => 'comments/form' %></div>
+  </div>
+

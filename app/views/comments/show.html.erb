@@ -1,0 +1,12 @@
+  <h1>Comentarios</h1>
+
+  <div>
+    <ol>
+      <% @comments.each do |comment| %>
+          <li>
+            <div><font color="#ff8c00" size="3" style="background: #E0E0E0"><%= comment.text %></font>
+              <%= link_to 'X', comment, :remote => true, method: :delete %></div>
+          </li>
+      <% end %>
+    </ol>
+  </div>

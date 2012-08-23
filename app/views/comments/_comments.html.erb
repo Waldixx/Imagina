@@ -1,0 +1,14 @@
+<h1>Comentarios</h1>
+
+<div>
+  <ol>
+    <% @comments.each do |comment| %>
+        <li>
+          <div><font color="#ff8c00" size="3" style="background: #E0E0E0"><%= comment.text %></font></div>
+          <!--<td><= link_to 'Show', comment %></td>
+<td><= link_to 'Edit', edit_comment_path(comment) %></td>
+<td><= link_to 'Destroy', comment, confirm: 'Are you sure?', method: :delete %></td>-->
+        </li>
+    <% end %>
+  </ol>
+</div>
