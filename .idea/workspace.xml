@@ -55,10 +55,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Gemfile" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="35" selection-start="200" selection-end="200" vertical-scroll-proportion="0.0">
+            <state line="2" column="24" selection-start="51" selection-end="51" vertical-scroll-proportion="0.054607507">
               <folding />
             </state>
           </provider>
@@ -109,10 +109,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_form.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/comments/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="49" selection-start="577" selection-end="577" vertical-scroll-proportion="0.4088586">
+            <state line="15" column="49" selection-start="577" selection-end="577" vertical-scroll-proportion="-9.6">
               <folding />
             </state>
           </provider>
@@ -156,9 +156,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="279" />
-    <option name="y" value="324" />
+    <option name="y" value="22" />
     <option name="width" value="1280" />
-    <option name="height" value="800" />
+    <option name="height" value="774" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -717,11 +717,11 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Query Language Console.Default" />
-      <item index="1" class="java.lang.String" itemvalue="Rake.test" />
-      <item index="2" class="java.lang.String" itemvalue="Rake.spec" />
-      <item index="3" class="java.lang.String" itemvalue="Rails.Production: imagina" />
-      <item index="4" class="java.lang.String" itemvalue="Rails.Development: imagina" />
+      <item index="0" class="java.lang.String" itemvalue="Rake.test" />
+      <item index="1" class="java.lang.String" itemvalue="Rake.spec" />
+      <item index="2" class="java.lang.String" itemvalue="Rails.Production: imagina" />
+      <item index="3" class="java.lang.String" itemvalue="Rails.Development: imagina" />
+      <item index="4" class="java.lang.String" itemvalue="Query Language Console.Default" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -754,7 +754,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="279" y="324" width="1280" height="800" extended-state="6" />
+    <frame x="279" y="22" width="1280" height="774" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18262987" sideWeight="0.5659574" order="3" side_tool="false" content_ui="tabs" />
@@ -908,16 +908,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
+    <entry file="file://$PROJECT_DIR$/app/views/comments/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="35" selection-start="200" selection-end="200" vertical-scroll-proportion="0.0">
+        <state line="15" column="49" selection-start="577" selection-end="577" vertical-scroll-proportion="-9.6">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/comments/_form.html.erb">
+    <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="49" selection-start="577" selection-end="577" vertical-scroll-proportion="0.4088586">
+        <state line="2" column="24" selection-start="51" selection-end="51" vertical-scroll-proportion="0.054607507">
           <folding />
         </state>
       </provider>
