@@ -1,16 +1,7 @@
+<!-- Formulario de comentarios  el cual tiene la propiedad de remote => true esto quiere decir que las llamadas seran remotas
+     esto con el fin de realizar una llamada JS-->
 <%= form_for @comment, :remote => true, :html => {:multipart => true, :class => 'form-inline' } do |f| %>
-  <% if @comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
-      <ul>
-      <% @comment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+    <!-- Se pasa el id = 'form' el cual sera utilizado para limpiar el formulario con jquery vease create.js.erb -->
     <%= f.text_field :text, :id => 'form',  :class => 'input-medium', :placeholder => "Escribe..." %>
 
     <%= f.hidden_field :image_id, :id => "imagen"%>

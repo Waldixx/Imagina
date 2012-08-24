@@ -1,19 +1,7 @@
+#@author Oswaldo Didier Lopez Garcia
+#24 de Agosto del 2012
+#oswaldo@codetlan.com
 class ImagesController < ApplicationController
-  # GET /images
-  # GET /images.json
-  def index
-    @images = Image.all
-    @image = Image.new
-    @comments = Comment.find_all_by_image_id(1)
-    @comment = Comment.new
-
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @images }
-      format.js
-    end
-  end
 
   # GET /images/1
   # GET /images/1.json
@@ -45,6 +33,7 @@ class ImagesController < ApplicationController
 
   # POST /images
   # POST /images.json
+  # Nos regresa la respuesta en JS
   def create
     @image = Image.new(params[:image])
 

@@ -1,12 +1,10 @@
-
-  <div class="navbar-inner">
-    <center><h1><font color="#708090">Imagina</font></h1></center>
-  </div>
-<br>
+<!-- Columna vertebral de nuestro sistema en el cual se muestra el carousel, renderiamos el formulario de imagenes y comentarios
+     y listamos los comentarios-->
 <div><%= render :partial => 'images/form' %></div>
 <div class="row-fluid">
   <div class="span8 columns">
-
+    <!-- Carousel de imagenes y le ponemos un id el cual ocupamos en el archivo application.js para escuchar el evento click de las
+         imagenes y con esto mostrar sus comentarios para cada una de ellas-->
     <div id="myCarousel" class="carousel">
       <div class="carousel-inner">
         <% i = 0 %>
@@ -18,9 +16,10 @@
                 <div class="item">
             <% end %>
             <center>
+              <!-- Ponemos id para saber a que imagen se le esta creando un comentario -->
               <%= image_tag image.picture_url, :id => image.id %>
-              <a class="left">&lsaquo;</a>
-              <a class="right">&rsaquo;</a></center>
+              <a class="carousel-control left">&lsaquo;</a>
+              <a class="carousel-control right">&rsaquo;</a></center>
             </div>
         <% end %>
 
@@ -29,8 +28,10 @@
     </div>
 
   <br/>
-
-  <div id="comentarios" class="span3">
+  <!-- Listamos los comentarios y rendereamos el form.
+       Asignamos un id al div el cual utilizaremos para actualizar los
+       comentarios en el caso de agregar o eliminar algunos de estos-->
+  <div class="span3">
     <div id="comments"><%= render :template => 'comments/index' %></div>
     <div><%= render :partial => 'comments/form' %></div>
   </div>

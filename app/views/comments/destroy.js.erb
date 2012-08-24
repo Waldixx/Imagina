@@ -1,1 +1,7 @@
+/*@author Oswaldo Didier Lopez Garcia
+ * 24 de Agosto del 2012
+ * oswaldo@codetlan.com */
+
+ /* Archivo que se manda a llamar despues de eliminar un comentario.
+* Listamos los comentarios que quedan en existencia*/
 $("#comments").html("<%= escape_javascript(render :template => 'comments/index')%>");

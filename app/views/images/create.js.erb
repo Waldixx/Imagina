@@ -1,6 +1,12 @@
-<% if remotipart_submitted? %>
-location.href = 'images';
-<% else %>
-location.href = 'images';
+/*@author Oswaldo Didier Lopez Garcia
+ * 24 de Agosto del 2012
+ * oswaldo@codetlan.com */
 
+ /* Para las imagenes se agrego una gema llamada remotipart la cual tiene la finalidad de cachar el tipo de respuesta
+* que se obtenga al agregar la imagen de acuerdo a si los parametros trae o no trae imagen.*/
+<% if remotipart_submitted? %>
+//En caso de que traiga imagen se realiza una referencia al index.
+location.href = '/';
+<% else %>
+//Validacion para que no agregue imagenes vacias.
 <% end %>

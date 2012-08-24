@@ -1,10 +1,13 @@
+#@author Oswaldo Didier Lopez Garcia
+#24 de Agosto del 2012
+#oswaldo@codetlan.com
 class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
+  #Listamos los comentarios de acuerdo al id de la imagen en la que estemos posicionados
+  # Nos regresa la respuesta en JS
   def index
-    #@comments = Comment.all
     @comments = Comment.find_all_by_image_id(params[:id])
-    logger.debug(@comments)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,9 +18,9 @@ class CommentsController < ApplicationController
 
   # GET /comments/1
   # GET /comments/1.json
+  #Listamos los comentarios de acuerdo al id de la imagen en la que estemos posicionados
   def show
     @comments = Comment.find_all_by_image_id(params[:id])
-    logger.debug(@comments)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @comments }
@@ -26,10 +29,9 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   # GET /comments/new.json
+  # Nos regresa la respuesta en JS
   def new
     @comment = Comment.new
-    @images = Image.new(params[:image_id])
-    logger.debug(@images)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,12 +47,13 @@ class CommentsController < ApplicationController
 
   # POST /comments
   # POST /comments.json
+  # Nos regresa la respuesta en JS
   def create
-    @image = Image.new(params[:id])
     @comment = Comment.new(params[:comment])
 
     respond_to do |format|
       if @comment.save
+        #Buscamos y listamos todos los comentarios que tengan el image_id con el que fue agregado el comentario
         @comments = Comment.find_all_by_image_id(@comment.image_id)
         format.js
       else
@@ -78,14 +81,15 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1
   # DELETE /comments/1.json
+  #Nos regresa una respuesta en JS
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
+    #Despues de eliminar buscamos y listamos todos los comentarios de acuerdo al image_id que eliminamos con la finalidad de
+    #hacer un refrescado ajax
     @comments = Comment.find_all_by_image_id(@comment.image_id)
 
     respond_to do |format|
-      #format.html { redirect_to '/images'}
-      #format.json { head :no_content }
       format.js
     end
   end

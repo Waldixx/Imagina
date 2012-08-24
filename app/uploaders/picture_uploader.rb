@@ -1,4 +1,5 @@
 # encoding: utf-8
+#Archivo que se crea para realizar el uploads de imagenes.
 
 class PictureUploader < CarrierWave::Uploader::Base
 

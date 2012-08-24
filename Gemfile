@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+#Le agregamos la gema heroku para poder realizar el deploy en heroku sin ningun problema
 gem 'rails', '3.2.3'
 gem 'heroku'
 
@@ -10,7 +10,7 @@ group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'sqlite3'
 end
-
+#Le decimos a nuestra aplicacion que cuando este en produccion debe utilizar postgres.
 group :production do
   gem 'pg'
 end
@@ -28,6 +28,7 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 end
 
+#Gemas que utilizamos para nuestra app
 gem 'jquery-rails'
 gem 'carrierwave'
 gem 'rmagick'

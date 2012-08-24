@@ -1,2 +1,8 @@
+/*@author Oswaldo Didier Lopez Garcia
+* 24 de Agosto del 2012
+* oswaldo@codetlan.com */
+
+ /* Este archivo se manda a llamar despues de agregar un comentario debido a que manda a llamar JS.
+* Aqui vamos recargar los comentarios una vez que se agregue alguno y despues limpiamos el cuadro de texto por medio de un id*/
 $("#comments").html("<%= escape_javascript(render :template => 'comments/index')%>");
 $("#form").val("");

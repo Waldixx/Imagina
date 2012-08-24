@@ -1,15 +1,6 @@
+<!-- Formulario de imagen  el cual tiene la propiedad de remote => true esto quiere decir que las llamadas seran remotas
+     esto con el fin de realizar una llamada JS-->
 <%= form_for @image, :remote => true, :html => {:multipart => true, :class => 'form-inline' } do |f| %>
-  <% if @image.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</h2>
-
-      <ul>
-      <% @image.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
     <%= f.text_field :name, :class => 'input-medium', :placeholder => "Nombre Imagen" %>
 
