@@ -1,261 +1,177 @@
-== Welcome to Rails
+== Bienvenidos a Rails
+== App Imagina
+== @Author Oswaldo Didier Lòpez Garcìa
+== oswaldo@codetlan.com, @Waldiixx
 
-Rails is a web-application framework that includes everything needed to create
-database-backed web applications according to the Model-View-Control pattern.
+La aplicacion Imagina es una pequeña demostración de la integracion entre un formulario basico, Imagenes y Jquery.
 
-This pattern splits the view (also called the presentation) into "dumb"
-templates that are primarily responsible for inserting pre-built data in between
-HTML tags. The model contains the "smart" domain objects (such as Account,
-Product, Person, Post) that holds all the business logic and knows how to
-persist themselves to a database. The controller handles the incoming requests
-(such as Save New Account, Update Product, Show Post) by manipulating the model
-and directing data to the view.
+Acontinuación se describen los pasos que se realizaron para la creación de la App.
 
-In Rails, the model is handled by what's called an object-relational mapping
-layer entitled Active Record. This layer allows you to present the data from
-database rows as objects and embellish these data objects with business logic
-methods. You can read more about Active Record in
-link:files/vendor/rails/activerecord/README.html.
+1.- Primero vamos a realizar la creación de nuestro proyecto con las siguientes instrucciones en la terminal,
 
-The controller and view are handled by the Action Pack, which handles both
-layers by its two parts: Action View and Action Controller. These two layers
-are bundled in a single package due to their heavy interdependence. This is
-unlike the relationship between the Active Record and Action Pack that is much
-more separate. Each of these packages can be used independently outside of
-Rails. You can read more about Action Pack in
-link:files/vendor/rails/actionpack/README.html.
+# rails new <nombre de nuestra app>
+Crea la carpeta de la aplicacion y nos crea nuestro entorno de desarrollo.
 
+2.- Ahora vamos a realizar los modelos que se ocuparan para poder construir nuestro sistema, dichos comandos estan construidos
+de la siguiente manera.
 
-== Getting Started
+  <comando rails><nombre del modelo><campos para creacion de BD nombre:tipo><comando para que no genere los styles de rails>
 
-1. At the command prompt, create a new Rails application:
-       <tt>rails new myapp</tt> (where <tt>myapp</tt> is the application name)
+Nos genera los modelos, la vista, los controladores y mapea automaticamente los modelos a la BD generando las tablas.
 
-2. Change directory to <tt>myapp</tt> and start the web server:
-       <tt>cd myapp; rails server</tt> (run with --help for options)
+# rails g scaffold Image name:string picture:string --skip-stylesheets
+# rails g scaffold Comment name:string picture:string --skip-stylesheets
 
-3. Go to http://localhost:3000/ and you'll see:
-       "Welcome aboard: You're riding Ruby on Rails!"
+Creamos el modelo Image para la visualizacion y carga de imagenes. Tambien creamos el modelo Comment para la insercion
+de comentarios y visualizacion de estos.
 
-4. Follow the guidelines to start developing your application. You can find
-the following resources handy:
+3.- Una vez que tenemos nuestros modelos creados en la ruta /imagina/db/migrate  Tenemos los archivos que generaran nuestra
+BD con los campos de cada uno de los valores que les dimos al generar el scaffold.
+Para la creacion de la Base de datos ejecutamos el siguiente comando.
 
-* The Getting Started Guide: http://guides.rubyonrails.org/getting_started.html
-* Ruby on Rails Tutorial Book: http://www.railstutorial.org/
+# rake db:migrate
+Crea la BD con sus respectivas tablas de acuerdo a los modelos generados.
 
+Hasta este punto ya tenemos creada la mayor parte de nuestra App ya que podemos ver que automaticamente rails nos genera
+la funcionalidad de Agregar, Editar y Eliminar.
+Con esto podemos ver la facilidad y rapidez con la que se crea un formulario en Ruby & Rails.
+Si queremos comprobar esto ponemos en marcha nuestro servidor local en el cual correra la App creada.
 
-== Debugging Rails
+# rails server
+Pone en marcha nuestro servidor local.
 
-Sometimes your application goes wrong. Fortunately there are a lot of tools that
-will help you debug it and get it back on the rails.
+Una vez echo esto nos dirigimos a un navegador y ponemos:
 
-First area to check is the application log files. Have "tail -f" commands
-running on the server.log and development.log. Rails will automatically display
-debugging and runtime information to these files. Debugging info will also be
-shown in the browser on requests from 127.0.0.1.
+http://localhost:3000/images
+Observaremos las funcionalidades que se crearon para nuestro modelo Imagen
 
-You can also log your own messages directly into the log file from your code
-using the Ruby logger class from inside your controllers. Example:
-
-  class WeblogController < ActionController::Base
-    def destroy
-      @weblog = Weblog.find(params[:id])
-      @weblog.destroy
-      logger.info("#{Time.now} Destroyed Weblog ID ##{@weblog.id}!")
-    end
-  end
-
-The result will be a message in your log file along the lines of:
-
-  Mon Oct 08 14:22:29 +1000 2007 Destroyed Weblog ID #1!
-
-More information on how to use the logger is at http://www.ruby-doc.org/core/
-
-Also, Ruby documentation can be found at http://www.ruby-lang.org/. There are
-several books available online as well:
-
-* Programming Ruby: http://www.ruby-doc.org/docs/ProgrammingRuby/ (Pickaxe)
-* Learn to Program: http://pine.fm/LearnToProgram/ (a beginners guide)
-
-These two books will bring you up to speed on the Ruby language and also on
-programming in general.
+http://localhost:3000/comments
+Observaremos las funcionalidades que se crearon para nuestro modelo Comment
 
 
-== Debugger
+== Integracion de Bootstrap con Ruby and Rails
 
-Debugger support is available through the debugger command when you start your
-Mongrel or WEBrick server with --debugger. This means that you can break out of
-execution at any point in the code, investigate and change the model, and then,
-resume execution! You need to install ruby-debug to run the server in debugging
-mode. With gems, use <tt>sudo gem install ruby-debug</tt>. Example:
+Bootstrap:
 
-  class WeblogController < ActionController::Base
-    def index
-      @posts = Post.all
-      debugger
-    end
-  end
+Gema:
 
-So the controller will accept the action, run the first line, then present you
-with a IRB prompt in the server window. Here you can do things like:
+1.- Para poder darle una mejor apariencia en cuanto a estilos a nuestra App vamos a instalar una gema llamada Bootstrap y
+esto lo vamos hacer de la siguienta manera.
 
-  >> @posts.inspect
-  => "[#<Post:0x14a6be8
-          @attributes={"title"=>nil, "body"=>nil, "id"=>"1"}>,
-       #<Post:0x14a6620
-          @attributes={"title"=>"Rails", "body"=>"Only ten..", "id"=>"2"}>]"
-  >> @posts.first.title = "hello from a debugger"
-  => "hello from a debugger"
+Ingresamos al archivo que esta en /imagina/Gemfile  al estar dentro del archivo agregamos la siguiente linea
 
-...and even better, you can examine how your runtime objects actually work:
+gem 'twitter-bootstrap-rails'
 
-  >> f = @posts.first
-  => #<Post:0x13630c4 @attributes={"title"=>nil, "body"=>nil, "id"=>"1"}>
-  >> f.
-  Display all 152 possibilities? (y or n)
+Y para instalarla escribimos lo siguiente en la terminal
 
-Finally, when you're ready to resume execution, you can enter "cont".
+# bundle install
+Instala las gemas agregadas a nuestra App
+
+Pasamos a la generación de los archivos de estilos que tiene Bootstrap los llamados "stylesheets"
+
+# rails g bootstrap:install
+Creacion de stylesheets de bootstrap
+
+Para ver la nueva apariencia que tenemos en nuestras vistas refrescamos el navegador o entramos a las url`s
+mencionadas anteriormente.
+:D
+
+Es impresionante como tan rapido obtienes resultados y todavia sin escribir una sola linea de codigo.
 
 
-== Console
+== Creacion del Index
 
-The console is a Ruby shell, which allows you to interact with your
-application's domain model. Here you'll have all parts of the application
-configured, just like it is when the application is running. You can inspect
-domain models, change values, and save to the database. Starting the script
-without arguments will launch it in the development environment.
+1.- Vamos a crear nuestra pagina pricipal que sera la que va unir nuestros modelos para formar el funcionamiento
+de imagenes y cometarios.
+Para poder hacer esto solo generamos el controlador y la vista.
 
-To start the console, run <tt>rails console</tt> from the application
-directory.
+# rails g controller home index
+Crea el controlador y la vista llamada index.
 
-Options:
+2.- Abrimos el archivo que se encuentra en /imagina/config/routes.rb  y agregamos la siguiente linea
 
-* Passing the <tt>-s, --sandbox</tt> argument will rollback any modifications
-  made to the database.
-* Passing an environment name as an argument will load the corresponding
-  environment. Example: <tt>rails console production</tt>.
+root :to => 'home#index', as: 'Imagina'
+Con esto le estamos diciendo a nuestro sistema que la raiz sera la vista index y la hacemos nombrar Imagina.
 
-To reload your controllers and models after launching the console run
-<tt>reload!</tt>
+# rake routes
+Aplica la nueva configuracion de rutas.
 
-More information about irb can be found at:
-link:http://www.rubycentral.org/pickaxe/irb.html
+3.- Eliminamos la pagina index que trae por default Ruby & Rails para poder visualizar la que agregamos.
+
+# rm public/index.html
+
+4.- Comprobamos que nuestra pagina de inicio sea el index. Nos dirigimos a nuestro navegador y consultamos la siguiente url
+
+http://localhost:3000
+Observamos un mensaje que dice Home#Index esto quiere decir que vamos por buen camino.
 
 
-== dbconsole
+== Manejo de las Gems Carrierwave y Rmagick para el manejo de Imagenes.
 
-You can go to the command line of your database directly through <tt>rails
-dbconsole</tt>. You would be connected to the database with the credentials
-defined in database.yml. Starting the script without arguments will connect you
-to the development database. Passing an argument will connect you to a different
-database, like <tt>rails dbconsole production</tt>. Currently works for MySQL,
-PostgreSQL and SQLite 3.
+En esto caso para la parte de imagenes utilizaremos 2 gemas bastante utilizadas en el mundo Ruuby & Rails. Las cuales se nos
+hacen muy interesantes debido a que es muy facil utilzarlas y el control de las imagenes que se dan de alta en la aplicacion
+es simple ya que genera carpetas de acuerdo al id de la imagen en /imagina/public/uploads
 
-== Description of Contents
+Tambien con Rmagick podemos elegir el tamaño que deben de tomar nuestras imagenes al visualizarlas en la aplicacion.
 
-The default directory structure of a generated Ruby on Rails application:
+1.- Agregamos nuestras gemas al archivo Gemfile escribiendo estas simples lineas.
 
-  |-- app
-  |   |-- assets
-  |       |-- images
-  |       |-- javascripts
-  |       `-- stylesheets
-  |   |-- controllers
-  |   |-- helpers
-  |   |-- mailers
-  |   |-- models
-  |   `-- views
-  |       `-- layouts
-  |-- config
-  |   |-- environments
-  |   |-- initializers
-  |   `-- locales
-  |-- db
-  |-- doc
-  |-- lib
-  |   `-- tasks
-  |-- log
-  |-- public
-  |-- script
-  |-- test
-  |   |-- fixtures
-  |   |-- functional
-  |   |-- integration
-  |   |-- performance
-  |   `-- unit
-  |-- tmp
-  |   |-- cache
-  |   |-- pids
-  |   |-- sessions
-  |   `-- sockets
-  `-- vendor
-      |-- assets
-          `-- stylesheets
-      `-- plugins
+gem 'carrierwave'
+gem 'rmagick'
 
-app
-  Holds all the code that's specific to this particular application.
+Una vez echo esto vamos a la terminal y procedemos a la instalación de estas. # bundle install
 
-app/assets
-  Contains subdirectories for images, stylesheets, and JavaScript files.
+2.- Generamos el archivo para la configuracion de imagenes.
 
-app/controllers
-  Holds controllers that should be named like weblogs_controller.rb for
-  automated URL mapping. All controllers should descend from
-  ApplicationController which itself descends from ActionController::Base.
+# rails g uploader picture
+Archivo que se genera en /imagina/app/uploaders/
 
-app/models
-  Holds models that should be named like post.rb. Models descend from
-  ActiveRecord::Base by default.
+3.- Para que funcione adecuadamente la gema rmagick en MAC debemos de correr el siguiente comando.
 
-app/views
-  Holds the template files for the view that should be named like
-  weblogs/index.html.erb for the WeblogsController#index action. All views use
-  eRuby syntax by default.
+# curl https://raw.github.com/maddox/magick-installer/master/magick-installer.sh | sh
+Este comando puede tardar varios minutos...
 
-app/views/layouts
-  Holds the template files for layouts to be used with views. This models the
-  common header/footer method of wrapping views. In your views, define a layout
-  using the <tt>layout :default</tt> and create a file named default.html.erb.
-  Inside default.html.erb, call <% yield %> to render the view using this
-  layout.
+4.- Ya que tenemos la configuración completa para la creacion de imagenes les sugerimos observar los siguientes archivos
+en ellos se comenta como generar y visualizar imagenes.
+- /iamgina/app/views/images/_form.html.erb
+- /iamgina/app/views/images/index.html.erb
 
-app/helpers
-  Holds view helpers that should be named like weblogs_helper.rb. These are
-  generated for you automatically when using generators for controllers.
-  Helpers can be used to wrap functionality for your views into methods.
 
-config
-  Configuration files for the Rails environment, the routing map, the database,
-  and other dependencies.
+== Añadimos Jquery para hacer un manejo Ajax dentro de la App.
 
-db
-  Contains the database schema in schema.rb. db/migrate contains all the
-  sequence of Migrations for your schema.
+La incorporación de Jquery dentro de esta aplicacion es para que la visualizacion de esta sea mas elegante y no estar
+refrescando cada que se agrega o elimina algun comentario y tambien para que al cambiar la imagen se actualizen los comentarios.
 
-doc
-  This directory is where your application documentation will be stored when
-  generated using <tt>rake doc:app</tt>
+Para que funcione Jquery tendremos que seguir los siguientes pasos.
 
-lib
-  Application specific libraries. Basically, any kind of custom code that
-  doesn't belong under controllers, models, or helpers. This directory is in
-  the load path.
+1.- Se instala la gema como las gemas anteriores.
 
-public
-  The directory available for the web server. Also contains the dispatchers and the
-  default HTML files. This should be set as the DOCUMENT_ROOT of your web
-  server.
+gem 'jquery-rails'
 
-script
-  Helper scripts for automation and generation.
+# bundle install
 
-test
-  Unit and functional tests along with fixtures. When using the rails generate
-  command, template test files will be generated for you and placed in this
-  directory.
 
-vendor
-  External libraries that the application depends on. Also includes the plugins
-  subdirectory. If the app has frozen rails, those gems also go here, under
-  vendor/rails/. This directory is in the load path.
+En el archivo application.js es donde escribiremos nuestro codigo javascript que interectuara con la aplicacion.
+Vease el archivo y los comentarios para una mejor explicacion de la funcionalidad de imagenes y comentarios.
+
+
+
+*** La App Imagina se encuentra funcionando actualmente en heroku en la siguiente url http://imagina.herokuapp.com/  ***
+En caso de no saber de que forma subir a heroku una App tambien les invito a seguirnos en tumblr y ver nuestro post donde
+te enseñamos de que forma realizarlo.
+
+El codigo es totalmente publico para ser bajado y modificado.
+Estamos al tanto de sus dudas o comentarios y espero les guste nuestro post.
+
+Saludos.
+
+
+
+
+
+
+
+
+
+
+
